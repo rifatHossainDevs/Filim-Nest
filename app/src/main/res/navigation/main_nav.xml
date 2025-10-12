@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ruItSolution.filimnest.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.ruItSolution.filimnest.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" />
+    <fragment
+        android:id="@+id/tvSeriesFragment"
+        android:name="com.ruItSolution.filimnest.TvSeriesFragment"
+        android:label="fragment_tv_series"
+        tools:layout="@layout/fragment_tv_series" />
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="com.ruItSolution.filimnest.AnimationFragment"
+        android:label="fragment_animation"
+        tools:layout="@layout/fragment_animation" />
+</navigation>
