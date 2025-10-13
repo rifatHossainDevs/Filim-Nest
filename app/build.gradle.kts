@@ -78,4 +78,8 @@ dependencies {
     implementation(libs.coroutines.android)
 
     implementation(libs.material.v1120)
+
+    implementation (libs.imageslideshow)
+
+    implementation("com.github.zhpanvip:BannerViewPager:3.5.17")
 }
