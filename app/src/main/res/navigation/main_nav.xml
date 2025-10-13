@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/movieFragment">
+    app:startDestination="@id/homeFragment">
 
 
 
@@ -11,20 +11,41 @@
         android:id="@+id/homeFragment"
         android:name="com.ruItSolution.filimnest.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.ruItSolution.filimnest.MovieFragment"
         android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" />
+        tools:layout="@layout/fragment_movie" >
+        <action
+            android:id="@+id/action_movieFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tvSeriesFragment"
         android:name="com.ruItSolution.filimnest.TvSeriesFragment"
         android:label="fragment_tv_series"
-        tools:layout="@layout/fragment_tv_series" />
+        tools:layout="@layout/fragment_tv_series" >
+        <action
+            android:id="@+id/action_tvSeriesFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/animationFragment"
         android:name="com.ruItSolution.filimnest.AnimationFragment"
         android:label="fragment_animation"
-        tools:layout="@layout/fragment_animation" />
+        tools:layout="@layout/fragment_animation" >
+        <action
+            android:id="@+id/action_animationFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.ruItSolution.filimnest.DescriptionFragment"
+        android:label="fragment_description"
+        tools:layout="@layout/fragment_description" />
 </navigation>

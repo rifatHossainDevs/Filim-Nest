@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DescriptionFragment">
+
+    <ImageView
+        android:id="@+id/iv_movie_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_190sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_movie"/>
+
+    <ImageView
+        android:id="@+id/shape_play_white"
+        android:layout_width="@dimen/_48sdp"
+        android:layout_height="@dimen/_48sdp"
+        android:background="@drawable/shape_play_circle_description"
+        android:padding="@dimen/_3sdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/shape_play_circle_red"
+        app:layout_constraintStart_toStartOf="@id/iv_movie_image"
+        app:layout_constraintTop_toTopOf="@id/iv_movie_image"
+        app:layout_constraintEnd_toEndOf="@id/iv_movie_image"
+        app:layout_constraintBottom_toBottomOf="@id/iv_movie_image"/>
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginStart="2dp"
+        android:src="@drawable/ic_play_button_black_24"
+        app:layout_constraintBottom_toBottomOf="@id/shape_play_white"
+        app:layout_constraintEnd_toEndOf="@id/shape_play_white"
+        app:layout_constraintStart_toStartOf="@id/shape_play_white"
+        app:layout_constraintTop_toTopOf="@id/shape_play_white" />
+
+    <TextView
+        android:id="@+id/tv_movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="All is Well"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_movie_image" />
+
+    <TextView
+        android:id="@+id/tv_category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Hollywood"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_name" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_name">
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
