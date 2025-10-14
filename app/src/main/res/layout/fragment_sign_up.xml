@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent" />-->
 
     <LinearLayout
+        android:id="@+id/sign_in_with_google"
         android:layout_marginTop="@dimen/_24sdp"
         android:background="@drawable/shape_sign_in"
         android:layout_width="match_parent"
