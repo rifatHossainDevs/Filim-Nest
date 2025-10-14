@@ -33,4 +33,5 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     abstract fun setAllClickListener()
     abstract fun allObserver()
+
 }
