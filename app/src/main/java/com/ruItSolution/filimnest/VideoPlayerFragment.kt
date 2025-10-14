@@ -37,8 +37,6 @@ class VideoPlayerFragment :
                 super.onPlayerError(error)
             }
         })
-
-
     }
 
     override fun onStart() {
