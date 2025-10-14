@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/containerFragment">
+    app:startDestination="@id/signUpFragment">
 
 
 
@@ -62,4 +62,13 @@
         android:name="com.ruItSolution.filimnest.ContainerFragment"
         android:label="fragment_container"
         tools:layout="@layout/fragment_container" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.ruItSolution.filimnest.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_containerFragment"
+            app:destination="@id/containerFragment" />
+    </fragment>
 </navigation>
