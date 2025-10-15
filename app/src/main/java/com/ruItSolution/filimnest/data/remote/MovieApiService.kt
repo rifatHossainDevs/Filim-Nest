@@ -2,9 +2,11 @@ package com.ruItSolution.filimnest.data.remote
 
 import com.ruItSolution.filimnest.data.dto.ResponseGetCategoryDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetLatestVideoDTO
+import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MovieApiService {
 
@@ -19,6 +21,13 @@ interface MovieApiService {
     suspend fun searchVideo(
         @Path("title") title: String
     ): Response<ResponseGetLatestVideoDTO>
+
+    @GET("videos/get-video/category-paginated/{categoryId}")
+    suspend fun getVideosByCategoryPaginated(
+        @Path("categoryId") categoryId: Int,
+        @Query("page") page: Int,
+        @Query("limit") limit: Int
+    ): Response<ResponseGetVideoByCategoryPaginatedDTO>
 
 }
 

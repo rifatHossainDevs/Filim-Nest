@@ -2,6 +2,7 @@ package com.ruItSolution.filimnest.data.repoImpl
 
 import com.ruItSolution.filimnest.data.dto.ResponseGetCategoryDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetLatestVideoDTO
+import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDTO
 import com.ruItSolution.filimnest.data.remote.MovieApiService
 import com.ruItSolution.filimnest.domain.repo.MovieApiRepository
 import retrofit2.Response
@@ -21,6 +22,18 @@ class MovieApiRepositoryImpl @Inject constructor(
 
     override suspend fun searchVideo(title: String): Response<ResponseGetLatestVideoDTO> {
         return movieApiService.searchVideo(title)
+    }
+
+    override suspend fun getVideosByCategoryPaginated(
+        categoryId: Int,
+        page: Int,
+        limit: Int
+    ): Response<ResponseGetVideoByCategoryPaginatedDTO> {
+        return movieApiService.getVideosByCategoryPaginated(
+            categoryId = categoryId,
+            page = page,
+            limit = limit
+        )
     }
 
 }
