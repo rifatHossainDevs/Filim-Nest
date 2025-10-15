@@ -3,6 +3,7 @@ package com.ruItSolution.filimnest.data.dto
 
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import com.ruItSolution.filimnest.domain.model.CategoryModel
 
 @Keep
 data class ResponseGetCategoryDTO(
@@ -31,3 +32,15 @@ data class ResponseGetCategoryDTO(
         val v: Int? = null
     )
 }
+
+
+fun ResponseGetCategoryDTO.toDomainModel(): List<CategoryModel>? {
+    return data?.map {
+        CategoryModel(
+            categoryName = it?.categoryName.orEmpty(),
+            categoryNo = it?.categoryNo ?: 0,
+            id = it?.id.orEmpty()
+        )
+    }
+}
+

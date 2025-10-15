@@ -3,6 +3,7 @@ package com.ruItSolution.filimnest.data.dto
 
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import com.ruItSolution.filimnest.domain.model.VideoModel
 
 @Keep
 data class ResponseGetLatestVideoDTO(
@@ -42,5 +43,20 @@ data class ResponseGetLatestVideoDTO(
         @SerializedName("views")
         val views: Int? = null
     )
+}
+
+
+fun ResponseGetLatestVideoDTO.toDomain(): List<VideoModel> {
+    return this.data?.map {
+        VideoModel(
+            categoryNo = it?.categoryNo,
+            description = it?.description.orEmpty(),
+            duration = it?.duration ?: 0,
+            id = it?.id.orEmpty(),
+            thumbnail = it?.thumbnail.orEmpty(),
+            title = it?.title.orEmpty(),
+            videoFile = it?.videoFile.orEmpty()
+        )
+    } ?: emptyList()
 }
 
