@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,41 +12,67 @@
         android:layout_height="wrap_content">
 
         <com.denzcoskun.imageslider.ImageSlider
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_192sdp"
             app:iss_auto_cycle="true"
-            app:iss_period="1000"
             app:iss_delay="1000"
-            app:iss_text_align="CENTER"/>
+            app:iss_period="1000"
+            app:iss_text_align="CENTER"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Category"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_slider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_category"
+            tools:listitem="@layout/item_layout_category" />
 
         <LinearLayout
             android:id="@+id/layoutHollywood"
-            android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_slider"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@id/rv_category">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="start"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Hollywood"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="start"
+                android:text="Hollywood"
                 android:textColor="@color/secondary"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="end"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
+                android:gravity="end"
                 android:text="See all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
@@ -56,42 +81,41 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_hollywood"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutHollywood"
-            tools:listitem="@layout/item_layout_home"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            tools:listitem="@layout/item_layout_home" />
 
         <LinearLayout
             android:id="@+id/layoutBollywood"
-            android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_hollywood"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@id/rv_hollywood">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="start"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Bollywood"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="start"
+                android:text="Bollywood"
                 android:textColor="@color/secondary"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="end"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
+                android:gravity="end"
                 android:text="See all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
@@ -100,42 +124,41 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_bollywood"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutBollywood"
-            tools:listitem="@layout/item_layout_home"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            tools:listitem="@layout/item_layout_home" />
 
         <LinearLayout
             android:id="@+id/layoutHorror"
-            android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_bollywood"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@id/rv_bollywood">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="start"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Horror"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="start"
+                android:text="Horror"
                 android:textColor="@color/secondary"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="end"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
+                android:gravity="end"
                 android:text="See all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
@@ -144,43 +167,41 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_horror"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutHorror"
-            tools:listitem="@layout/item_layout_home"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
-
+            tools:listitem="@layout/item_layout_home" />
 
         <LinearLayout
             android:id="@+id/layoutTamil"
-            android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_horror"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@id/rv_horror">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="start"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Tamil"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="start"
+                android:text="Tamil"
                 android:textColor="@color/secondary"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="end"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
+                android:gravity="end"
                 android:text="See all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
@@ -189,43 +210,42 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_tamil"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutTamil"
-            tools:listitem="@layout/item_layout_home"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            tools:listitem="@layout/item_layout_home" />
 
 
         <LinearLayout
             android:id="@+id/layoutAnimation"
-            android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_tamil"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@id/rv_tamil">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="start"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Animation"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="start"
+                android:text="Animation"
                 android:textColor="@color/secondary"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:gravity="end"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
+                android:gravity="end"
                 android:text="See all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
@@ -234,20 +254,17 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_animation"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutAnimation"
-            tools:listitem="@layout/item_layout_home"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            tools:listitem="@layout/item_layout_home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </ScrollView>

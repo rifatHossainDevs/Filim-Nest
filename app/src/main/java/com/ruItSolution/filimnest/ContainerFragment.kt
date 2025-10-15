@@ -4,14 +4,19 @@ import android.graphics.Typeface
 import android.view.Gravity
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.ruItSolution.filimnest.adapter.DrawerItemAdapter
 import com.ruItSolution.filimnest.adapter.ViewPagerAdapter
 import com.ruItSolution.filimnest.core.base.BaseFragment
 import com.ruItSolution.filimnest.databinding.FragmentContainerBinding
 
-class ContainerFragment : BaseFragment<FragmentContainerBinding>(FragmentContainerBinding::inflate) {
+class ContainerFragment :
+    BaseFragment<FragmentContainerBinding>(FragmentContainerBinding::inflate) {
 
     private val tabTitles = listOf("Home", "Movies", "TV Series", "Animation")
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var adapter: DrawerItemAdapter
 
     override fun setAllClickListener() {
         setupViewPager()
@@ -20,6 +25,12 @@ class ContainerFragment : BaseFragment<FragmentContainerBinding>(FragmentContain
         attachTabSelectedListener()
 
         binding.viewPager.isUserInputEnabled = false
+
+        setNavigationDrawer()
+    }
+
+    private fun setNavigationDrawer() {
+
     }
 
     private fun setupViewPager() {
@@ -31,7 +42,6 @@ class ContainerFragment : BaseFragment<FragmentContainerBinding>(FragmentContain
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             val textView = TextView(requireContext()).apply {
                 text = tabTitles[position]
-                //setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
                 setTypeface(null, Typeface.BOLD)
                 gravity = Gravity.CENTER
                 setTextColor(ContextCompat.getColor(requireContext(), R.color.tab_unselected))
