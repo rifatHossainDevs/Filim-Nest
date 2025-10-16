@@ -12,7 +12,7 @@
 
     <ImageView
         app:layout_constraintVertical_bias=".2"
-        android:layout_width="@dimen/_250sdp"
+        android:layout_width="220dp"
         android:layout_height="@dimen/_110sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,39 +21,45 @@
         android:layout_marginHorizontal="@dimen/_16sdp"
         android:src="@drawable/filim_nest_logo2"/>
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/_32sdp"
-        android:layout_gravity="bottom"
-        android:id="@+id/sign_in_with_google"
-        android:layout_marginTop="@dimen/_24sdp"
-        android:background="@drawable/shape_sign_in"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_16sdp"
-        android:padding="@dimen/_4sdp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginBottom="68dp"
+        android:backgroundTint="#4787F3"
+        android:layout_marginHorizontal="@dimen/_16sdp">
 
-        <ImageView
-            android:padding="@dimen/_4sdp"
-            android:layout_width="@dimen/_40sdp"
-            android:src="@drawable/ic_google_24"
-            android:background="@drawable/google_bg"
-            android:layout_height="@dimen/_40sdp"/>
-
-        <TextView
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:id="@+id/sign_in_with_google"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign in with Google"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:textSize="@dimen/_20sdp"
-            android:textStyle="bold"/>
+            android:orientation="horizontal"
+            android:padding="@dimen/_4sdp">
 
-    </LinearLayout>
+            <ImageView
+                android:padding="@dimen/_4sdp"
+                android:layout_width="40dp"
+                android:src="@drawable/ic_google_24"
+                android:background="@drawable/google_bg"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign in with Google"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

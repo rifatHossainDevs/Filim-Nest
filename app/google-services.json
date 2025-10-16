@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "433598294251",
+    "project_id": "filimnest",
+    "storage_bucket": "filimnest.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433598294251:android:8b865170f810fa10c936ae",
+        "android_client_info": {
+          "package_name": "com.ruItSolution.filimnest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433598294251-cnffctte83eg3a48u6v50nbvnmqvu11v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ruItSolution.filimnest",
+            "certificate_hash": "d8546e30b367fa8963d046731d56fbc9077dface"
+          }
+        },
+        {
+          "client_id": "433598294251-m3nuukl375l8ao19j32m4j68rccu9kdc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdlC5v4DPMPcc6hPf-ZK5l6yfy8C9A1sI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433598294251-m3nuukl375l8ao19j32m4j68rccu9kdc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
