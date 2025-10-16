@@ -3,7 +3,7 @@ package com.ruItSolution.filimnest.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.ruItSolution.filimnest.HomeFragment
+import com.ruItSolution.filimnest.presentation.home.HomeFragment
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {

@@ -1,8 +1,9 @@
-package com.ruItSolution.filimnest
+package com.ruItSolution.filimnest.presentation.home
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.denzcoskun.imageslider.models.SlideModel
+import com.ruItSolution.filimnest.R
 import com.ruItSolution.filimnest.adapter.VideoListAdapter
 import com.ruItSolution.filimnest.core.base.BaseFragment
 import com.ruItSolution.filimnest.databinding.FragmentHomeBinding

@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ruItSolution.filimnest.HomeFragment"
+        android:name="com.ruItSolution.filimnest.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_homeFragment_to_videoDetailFragment"
             app:destination="@id/videoDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/videoPlayerFragment"
@@ -42,4 +45,9 @@
             android:id="@+id/action_videoDetailFragment_to_videoPlayerFragment"
             app:destination="@id/videoPlayerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.ruItSolution.filimnest.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>
