@@ -42,19 +42,11 @@ class SplashScreenFragment : BaseFragment<FragmentSplashScreenBinding>(FragmentS
         lifecycleScope.launch {
             delay(3000)
             if (googleSignInClient.isSignIn()) {
-                /*Intent(requireContext(), MainActivity::class.java).also {
-                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(it)*/
-
-                //or
                 Intent(requireContext(), MainActivity::class.java).also {
                     it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(it)
                     requireActivity().finish()
                 }
-
-                /*startActivity(Intent(requireContext(), MainActivity::class.java))
-                requireActivity().finish()*/
             }else{
                 findNavController().navigate(R.id.action_splashScreenFragment2_to_signUpFragment2)
             }

@@ -13,47 +13,11 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_descriptionFragment"
-            app:destination="@id/descriptionFragment" />
+            android:id="@+id/action_homeFragment_to_videoListByCategoryFragment"
+            app:destination="@id/videoListByCategoryFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_categoryDetailsFragment"
-            app:destination="@id/categoryDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/movieFragment"
-        android:name="com.ruItSolution.filimnest.MovieFragment"
-        android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" >
-        <action
-            android:id="@+id/action_movieFragment_to_descriptionFragment"
-            app:destination="@id/descriptionFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/tvSeriesFragment"
-        android:name="com.ruItSolution.filimnest.TvSeriesFragment"
-        android:label="fragment_tv_series"
-        tools:layout="@layout/fragment_tv_series" >
-        <action
-            android:id="@+id/action_tvSeriesFragment_to_descriptionFragment"
-            app:destination="@id/descriptionFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/animationFragment"
-        android:name="com.ruItSolution.filimnest.AnimationFragment"
-        android:label="fragment_animation"
-        tools:layout="@layout/fragment_animation" >
-        <action
-            android:id="@+id/action_animationFragment_to_descriptionFragment"
-            app:destination="@id/descriptionFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/descriptionFragment"
-        android:name="com.ruItSolution.filimnest.DescriptionFragment"
-        android:label="fragment_description"
-        tools:layout="@layout/fragment_description" >
-        <action
-            android:id="@+id/action_descriptionFragment_to_videoPlayerFragment"
-            app:destination="@id/videoPlayerFragment" />
+            android:id="@+id/action_homeFragment_to_videoDetailFragment"
+            app:destination="@id/videoDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/videoPlayerFragment"
@@ -61,13 +25,21 @@
         android:label="fragment_video_player"
         tools:layout="@layout/fragment_video_player" />
     <fragment
-        android:id="@+id/containerFragment"
-        android:name="com.ruItSolution.filimnest.ContainerFragment"
-        android:label="fragment_container"
-        tools:layout="@layout/fragment_container" />
+        android:id="@+id/videoListByCategoryFragment"
+        android:name="com.ruItSolution.filimnest.VideoListByCategoryFragment"
+        android:label="fragment_video_list_by_category"
+        tools:layout="@layout/fragment_video_list_by_category" >
+        <action
+            android:id="@+id/action_videoListByCategoryFragment_to_videoDetailFragment"
+            app:destination="@id/videoDetailFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/categoryDetailsFragment"
-        android:name="com.ruItSolution.filimnest.CategoryDetailsFragment"
-        android:label="fragment_category_details"
-        tools:layout="@layout/fragment_category_details" />
+        android:id="@+id/videoDetailFragment"
+        android:name="com.ruItSolution.filimnest.VideoDetailFragment"
+        android:label="fragment_video_detail"
+        tools:layout="@layout/fragment_video_detail" >
+        <action
+            android:id="@+id/action_videoDetailFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
+    </fragment>
 </navigation>

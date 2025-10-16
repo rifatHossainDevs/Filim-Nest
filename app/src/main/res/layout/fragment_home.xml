@@ -73,7 +73,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="end"
-                android:text="See all"
+                android:text="@string/see_all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
 
@@ -116,7 +116,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="end"
-                android:text="See all"
+                android:text="@string/see_all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
 
@@ -159,7 +159,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="end"
-                android:text="See all"
+                android:text="@string/see_all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
 
@@ -202,7 +202,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="end"
-                android:text="See all"
+                android:text="@string/see_all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
 
@@ -246,7 +246,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="end"
-                android:text="See all"
+                android:text="@string/see_all"
                 android:textColor="#03A9F4"
                 android:textSize="@dimen/_14sdp" />
 
