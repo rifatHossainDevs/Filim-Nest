@@ -1,19 +1,16 @@
-package com.ruItSolution.filimnest
+package com.ruItSolution.filimnest.presentation.signup
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.ruItSolution.filimnest.R
 import com.ruItSolution.filimnest.core.base.BaseFragment
 import com.ruItSolution.filimnest.databinding.FragmentSignUpBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::inflate) {
     override fun setAllClickListener() {
         binding.signInWithGoogle.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_containerFragment)
+            //findNavController().navigate(R.id.action_signUpFragment_to_containerFragment)
         }
     }
 

@@ -8,7 +8,7 @@
     android:background="@drawable/img_9"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".SignUpFragment">
+    tools:context=".presentation.signup.SignUpFragment">
 
     <ImageView
         app:layout_constraintVertical_bias=".2"
