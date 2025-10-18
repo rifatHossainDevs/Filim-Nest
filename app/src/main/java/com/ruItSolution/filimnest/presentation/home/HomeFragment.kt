@@ -2,6 +2,7 @@ package com.ruItSolution.filimnest.presentation.home
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.models.SlideModel
 import com.ruItSolution.filimnest.R
 import com.ruItSolution.filimnest.adapter.VideoListAdapter
@@ -12,7 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate),
+    VideoListAdapter.SetOnItemClickListener {
 
     private lateinit var videoListAdapter: VideoListAdapter
     private val getVideoByCategoryViewModel: GetVideoByCategoryViewModel by viewModels()
@@ -70,7 +72,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     loading.dismiss()
                     // response.success.data?.docs to list of video model
                     val videoList = response.success.data!!.docs!!
-                    videoListAdapter = VideoListAdapter(videoList)
+                    videoListAdapter = VideoListAdapter(videoList, this@HomeFragment)
                     binding.rvHollywood.adapter = videoListAdapter
                 }
             }
@@ -90,7 +92,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     loading.dismiss()
                     // response.success.data?.docs to list of video model
                     val videoList = response.success.data!!.docs!!
-                    videoListAdapter = VideoListAdapter(videoList)
+                    videoListAdapter = VideoListAdapter(videoList, this@HomeFragment)
                     binding.rvBollywood.adapter = videoListAdapter
                 }
             }
@@ -109,7 +111,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     loading.dismiss()
                     // response.success.data?.docs to list of video model
                     val videoList = response.success.data!!.docs!!
-                    videoListAdapter = VideoListAdapter(videoList)
+                    videoListAdapter = VideoListAdapter(videoList, this@HomeFragment)
                     binding.rvHorror.adapter = videoListAdapter
                 }
             }
@@ -128,7 +130,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     loading.dismiss()
                     // response.success.data?.docs to list of video model
                     val videoList = response.success.data!!.docs!!
-                    videoListAdapter = VideoListAdapter(videoList)
+                    videoListAdapter = VideoListAdapter(videoList, this@HomeFragment)
                     binding.rvTamil.adapter = videoListAdapter
                 }
             }
@@ -147,7 +149,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     loading.dismiss()
                     // response.success.data?.docs to list of video model
                     val videoList = response.success.data!!.docs!!
-                    videoListAdapter = VideoListAdapter(videoList)
+                    videoListAdapter = VideoListAdapter(videoList, this@HomeFragment)
                     binding.rvAnimation.adapter = videoListAdapter
                 }
             }
@@ -171,6 +173,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         val imageSlider = binding.imageSlider
         imageSlider.setImageList(slideImageList)
+    }
+
+    override fun onItemClick(videoID: String) {
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToVideoDetailFragment(videoID))
     }
 
 }

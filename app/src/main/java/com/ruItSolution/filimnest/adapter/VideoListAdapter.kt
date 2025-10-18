@@ -8,8 +8,13 @@ import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDT
 import com.ruItSolution.filimnest.databinding.ItemLayoutHomeBinding
 import com.ruItSolution.filimnest.domain.model.VideoModel
 
-class VideoListAdapter(val videoList: List<ResponseGetVideoByCategoryPaginatedDTO.Data.Doc?>) :
+class VideoListAdapter(val videoList: List<ResponseGetVideoByCategoryPaginatedDTO.Data.Doc?>,
+                       private val onItemClickListener: SetOnItemClickListener) :
     RecyclerView.Adapter<VideoListAdapter.VideoViewHolder>() {
+
+        fun interface SetOnItemClickListener {
+            fun onItemClick(videoID: String)
+        }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,6 +38,10 @@ class VideoListAdapter(val videoList: List<ResponseGetVideoByCategoryPaginatedDT
                 Glide.with(root.context)
                     .load(videoList[position]!!.thumbnail)
                     .into(imgMovie)
+            }
+
+            holder.itemView.setOnClickListener {
+                onItemClickListener.onItemClick(videoList[position]!!.id.toString())
             }
         }
     }

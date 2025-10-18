@@ -3,6 +3,7 @@ package com.ruItSolution.filimnest.data.remote
 import com.ruItSolution.filimnest.data.dto.ResponseGetCategoryDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetLatestVideoDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDTO
+import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByIdDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -28,6 +29,11 @@ interface MovieApiService {
         @Query("page") page: Int,
         @Query("limit") limit: Int
     ): Response<ResponseGetVideoByCategoryPaginatedDTO>
+
+    @GET("videos/get-video-by-id/{id}")
+    suspend fun getVideoById(
+        @Path("id") id: String
+    ): Response<ResponseGetVideoByIdDTO>
 
 }
 

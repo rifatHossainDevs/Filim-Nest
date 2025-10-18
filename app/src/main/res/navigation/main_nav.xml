@@ -38,12 +38,15 @@
     </fragment>
     <fragment
         android:id="@+id/videoDetailFragment"
-        android:name="com.ruItSolution.filimnest.VideoDetailFragment"
+        android:name="com.ruItSolution.filimnest.presentation.videoDetail.VideoDetailFragment"
         android:label="fragment_video_detail"
         tools:layout="@layout/fragment_video_detail" >
         <action
             android:id="@+id/action_videoDetailFragment_to_videoPlayerFragment"
             app:destination="@id/videoPlayerFragment" />
+        <argument
+            android:name="videoId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"

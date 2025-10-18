@@ -3,6 +3,7 @@ package com.ruItSolution.filimnest.data.repoImpl
 import com.ruItSolution.filimnest.data.dto.ResponseGetCategoryDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetLatestVideoDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDTO
+import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByIdDTO
 import com.ruItSolution.filimnest.data.remote.MovieApiService
 import com.ruItSolution.filimnest.domain.repo.MovieApiRepository
 import retrofit2.Response
@@ -34,6 +35,10 @@ class MovieApiRepositoryImpl @Inject constructor(
             page = page,
             limit = limit
         )
+    }
+
+    override suspend fun getVideoById(id: String): Response<ResponseGetVideoByIdDTO> {
+        return movieApiService.getVideoById(id)
     }
 
 }

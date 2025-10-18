@@ -3,7 +3,9 @@ package com.ruItSolution.filimnest.domain.repo
 import com.ruItSolution.filimnest.data.dto.ResponseGetCategoryDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetLatestVideoDTO
 import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDTO
+import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByIdDTO
 import retrofit2.Response
+import retrofit2.http.Path
 
 interface MovieApiRepository {
 
@@ -18,6 +20,8 @@ interface MovieApiRepository {
         page: Int,
         limit: Int
     ): Response<ResponseGetVideoByCategoryPaginatedDTO>
+
+    suspend fun getVideoById(id: String): Response<ResponseGetVideoByIdDTO>
 
 }
 

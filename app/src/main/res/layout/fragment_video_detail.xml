@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".VideoDetailFragment">
+    tools:context=".presentation.videoDetail.VideoDetailFragment">
 
 
     <ImageView
@@ -196,6 +196,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_movie_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
