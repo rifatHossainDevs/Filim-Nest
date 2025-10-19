@@ -24,9 +24,13 @@
     </fragment>
     <fragment
         android:id="@+id/videoPlayerFragment"
-        android:name="com.ruItSolution.filimnest.VideoPlayerFragment"
+        android:name="com.ruItSolution.filimnest.presentation.videoPlayer.VideoPlayerFragment"
         android:label="fragment_video_player"
-        tools:layout="@layout/fragment_video_player" />
+        tools:layout="@layout/fragment_video_player" >
+        <argument
+            android:name="videoLink"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/videoListByCategoryFragment"
         android:name="com.ruItSolution.filimnest.VideoListByCategoryFragment"

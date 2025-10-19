@@ -3,6 +3,8 @@ package com.ruItSolution.filimnest.presentation.home
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.ruItSolution.filimnest.R
 import com.ruItSolution.filimnest.adapter.VideoListAdapter
@@ -18,10 +20,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private lateinit var videoListAdapter: VideoListAdapter
     private val getVideoByCategoryViewModel: GetVideoByCategoryViewModel by viewModels()
+    private val getLatestVideoViewModel: LatestVideoViewModel by viewModels()
 
 
     override fun setAllClickListener() {
-        setImageSlider()
+        //setImageSlider()
+
+        getLatestVideoViewModel.getLatestVideo()
 
         getVideoByCategoryViewModel.getHollywoodVideosByCategory(
             categoryId = 2,
@@ -154,25 +159,51 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 }
             }
         }
-    }
 
-    private fun setImageSlider() {
-        val images = listOf(
-            R.drawable.img_1,
-            R.drawable.img_2,
-            R.drawable.img_5,
-            R.drawable.img_4,
-        )
 
-        val slideImageList = mutableListOf(
-            SlideModel(images[0]),
-            SlideModel(images[1]),
-            SlideModel(images[2]),
-            SlideModel(images[3]),
-        )
+        // Get Latest Video ViewModel
+        lifecycleScope.launch {
+            getLatestVideoViewModel.latestVideoState.collect { response->
+                if (response.loading){
+                    loading.show()
+                }
+                if (response.error != null){
+                    loading.dismiss()
+                }
+                if (response.success != null){
+                    loading.dismiss()
 
-        val imageSlider = binding.imageSlider
-        imageSlider.setImageList(slideImageList)
+                    val latestVideoList = response.success
+
+                    if (latestVideoList.isNotEmpty()) {
+                        // 1. Convert your video list to a List<SlideModel>
+                        val slideImages = ArrayList<SlideModel>()
+                        for (video in latestVideoList) {
+                            // TODO: Replace 'video.thumbnail' and 'video.title'
+                            // with the real properties from your Video model
+                            slideImages.add(
+                                SlideModel(video.thumbnail, video.title)
+                            )
+                        }
+
+                        // 2. Set the images to the slider
+                        binding.imageSlider.setImageList(slideImages)
+
+                        // 3. (Optional) Set a click listener to navigate to details
+                        binding.imageSlider.setItemClickListener(object : ItemClickListener {
+                            override fun onItemSelected(position: Int) {
+                                val videoId = latestVideoList[position].id
+                                onItemClick(videoId)
+                            }
+
+                            override fun doubleClick(position: Int) {
+                                // You can leave this empty
+                            }
+                        })
+                    }
+                }
+            }
+        }
     }
 
     override fun onItemClick(videoID: String) {

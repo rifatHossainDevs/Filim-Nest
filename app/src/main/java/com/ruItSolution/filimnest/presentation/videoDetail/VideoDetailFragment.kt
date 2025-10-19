@@ -2,6 +2,7 @@ package com.ruItSolution.filimnest.presentation.videoDetail
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ruItSolution.filimnest.core.base.BaseFragment
@@ -15,8 +16,18 @@ class VideoDetailFragment : BaseFragment<FragmentVideoDetailBinding>(FragmentVid
 
     private val arg: VideoDetailFragmentArgs by navArgs()
 
+    private var videoLink: String = ""
+
     override fun setAllClickListener() {
         getVideoByIdViewModel.getVideoById(arg.videoId)
+
+        binding.btnPlay.setOnClickListener {
+            findNavController().navigate(
+                VideoDetailFragmentDirections.actionVideoDetailFragmentToVideoPlayerFragment(
+                    videoLink = videoLink
+                )
+            )
+        }
     }
 
     override fun allObserver() {
@@ -35,6 +46,8 @@ class VideoDetailFragment : BaseFragment<FragmentVideoDetailBinding>(FragmentVid
                     Glide.with(requireContext())
                         .load(secureUrl)
                         .into(binding.ivMovieImage)
+
+                    videoLink = response.success.videoFile
                 }
                 if (response.error != null){
                     loading.dismiss()

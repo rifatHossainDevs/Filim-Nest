@@ -1,20 +1,23 @@
-package com.ruItSolution.filimnest
+package com.ruItSolution.filimnest.presentation.videoPlayer
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
-import android.view.animation.AnimationUtils
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.core.view.GestureDetectorCompat
-import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.navigation.fragment.navArgs
+import com.ruItSolution.filimnest.R
 import com.ruItSolution.filimnest.core.base.BaseFragment
 import com.ruItSolution.filimnest.databinding.FragmentVideoPlayerBinding
+import dagger.hilt.android.AndroidEntryPoint
+
 
 @Suppress("DEPRECATION")
 @UnstableApi
+@AndroidEntryPoint
 class VideoPlayerFragment :
     BaseFragment<FragmentVideoPlayerBinding>(FragmentVideoPlayerBinding::inflate) {
 
@@ -22,29 +25,39 @@ class VideoPlayerFragment :
     private lateinit var gestureLeft: GestureDetectorCompat
     private lateinit var gestureRight: GestureDetectorCompat
 
+    private val args: VideoPlayerFragmentArgs by navArgs()
+
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initializePlayer()
-        setupDoubleTap()
-        setupFullscreenButton()
+
+        var url = args.videoLink
+        binding.webView.apply {
+            loadUrl(url)
+            settings.javaScriptEnabled = true
+            webViewClient = WebViewClient()
+            settings.setSupportZoom(true)
+        }
     }
 
     private fun initializePlayer() {
-        player = ExoPlayer.Builder(requireContext()).build()
+       /* player = ExoPlayer.Builder(requireContext()).build()
         binding.playerView.player = player
 
+        Log.d("TAG", "initializePlayer: ${args.videoLink}")
+
         val mediaItem = MediaItem.fromUri(
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            args.videoLink
         )
         player?.setMediaItem(mediaItem)
         player?.prepare()
         player?.play()
 
         // Set controller timeout (unstable API)
-        binding.playerView.controllerShowTimeoutMs = 4000
+        binding.playerView.controllerShowTimeoutMs = 4000*/
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    /*@SuppressLint("ClickableViewAccessibility")
     private fun setupDoubleTap() {
         val overlayLeft = binding.playerView.findViewById<View>(R.id.double_tap_left)
         val overlayRight = binding.playerView.findViewById<View>(R.id.double_tap_right)
@@ -83,8 +96,8 @@ class VideoPlayerFragment :
     private fun setupFullscreenButton() {
         binding.playerView.findViewById<View>(R.id.fullscreen_button).setOnClickListener {
             requireActivity().requestedOrientation =
-                if (resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-                else android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                else ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
     }
 
@@ -102,8 +115,23 @@ class VideoPlayerFragment :
         super.onDestroyView()
         player?.release()
         player = null
-    }
+    }*/
 
     override fun setAllClickListener() {}
     override fun allObserver() {}
+
+
+
+    /*
+    * @Deprecated("Deprecated in Java")
+    fun onBackPressed() {
+        if (binding.webView.canGoBack()){
+            binding.webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
+    }*/
+
+
+
 }
