@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FilimNest">
         <activity
+            android:name=".presentation.videoPlayer.VideoPlayerActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.IntroActivity"
             android:exported="true">
             <intent-filter>
@@ -27,13 +30,15 @@
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true"
-            android:screenOrientation="unspecified">
-
-        </activity>
+            android:screenOrientation="unspecified"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+        <!--appID:  ca-app-pub-5314757729080874~3245596150  -->
     </application>
 
 </manifest>
