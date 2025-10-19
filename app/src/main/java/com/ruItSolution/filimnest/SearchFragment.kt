@@ -1,59 +1,94 @@
 package com.ruItSolution.filimnest
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
+import androidx.appcompat.widget.SearchView
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ruItSolution.filimnest.adapter.SearchAdapter
+import com.ruItSolution.filimnest.core.base.BaseFragment
+import com.ruItSolution.filimnest.databinding.FragmentSearchBinding
+import com.ruItSolution.filimnest.domain.model.SearchCategoryItem
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var adapter: SearchAdapter
+    private lateinit var allItems: List<SearchCategoryItem>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun setAllClickListener() {
+        binding.ivBack.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    override fun allObserver() {}
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).hideToolBarAndDrawer()
+
+        setupRecyclerView()
+        setupSearchView()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun setupSearchView() {
+        // Expand and focus automatically
+        binding.searchView.isIconified = false
+        binding.searchView.requestFocus()
+
+        // Show soft keyboard after layout is ready
+        binding.searchView.post {
+            val imm = requireContext().getSystemService(InputMethodManager::class.java)
+            imm?.showSoftInput(binding.searchView.findFocus(), InputMethodManager.SHOW_IMPLICIT)
+
+        }
+
+
+
+        // Handle query text change
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?) = false
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val filteredList = if (newText.isNullOrEmpty()) {
+                    allItems
+                } else {
+                    allItems.filter {
+                        it.name.contains(newText, ignoreCase = true)
+                    }
                 }
+
+                // Update RecyclerView
+                adapter.updateData(filteredList.toMutableList())
+
+                // Show "No Match Found" if filtered list is empty
+                binding.apply {
+                    recyclerView.visibility = if (filteredList.isEmpty()) View.GONE else View.VISIBLE
+                    tvNoMatchFound.visibility = if (filteredList.isEmpty()) View.VISIBLE else View.GONE
+                }
+
+                return true
             }
+        })
+    }
+
+    private fun setupRecyclerView() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        allItems = listOf(
+            SearchCategoryItem("Latest"),
+            SearchCategoryItem("Popular"),
+            SearchCategoryItem("Top Rated"),
+            SearchCategoryItem("Upcoming"),
+            SearchCategoryItem("Action"),
+            SearchCategoryItem("Romantic"),
+            SearchCategoryItem("Horror")
+        )
+
+        adapter = SearchAdapter(allItems.toMutableList()) // Use mutable list
+        binding.recyclerView.adapter = adapter
     }
 }

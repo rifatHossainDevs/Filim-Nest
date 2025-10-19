@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
+import com.ruItSolution.filimnest.MainActivity
 import com.ruItSolution.filimnest.R
 import com.ruItSolution.filimnest.adapter.VideoListAdapter
 import com.ruItSolution.filimnest.core.base.BaseFragment
@@ -208,6 +209,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onItemClick(videoID: String) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToVideoDetailFragment(videoID))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).showToolBarAndDrawer()
     }
 
 }
