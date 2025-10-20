@@ -101,7 +101,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                         )
                     findNavController().navigate(action)
 
-                    // ✅ Reset state after navigation to prevent repeated navigation
+                    // Reset state after navigation to prevent repeated navigation
                     getVideoByCategoryViewModel.resetState()
                 }
 
