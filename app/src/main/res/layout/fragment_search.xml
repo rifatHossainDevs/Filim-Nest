@@ -15,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.SearchView
-
             android:id="@+id/searchView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -56,11 +55,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_1sdp"
         android:orientation="vertical"
+        android:elevation="4dp"
         android:paddingTop="@dimen/_4sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view"
-        tools:listitem="@layout/item_category_search" />
+        tools:listitem="@layout/item_category_search"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_searchMovieList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="24dp"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_4sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        tools:listitem="@layout/item_layout_video"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_noMatchFound"
