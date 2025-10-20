@@ -27,9 +27,9 @@ class SplashScreenFragment : BaseFragment<FragmentSplashScreenBinding>(FragmentS
     }
 
     override fun setAllClickListener() {
-        /*binding.root.postDelayed({
-            findNavController().navigate(R.id.action_splashScreenFragment2_to_signUpFragment2)
-        }, 3000)*/
+        binding.root.postDelayed({
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+        }, 3000)
 
         isUserLoggedIn()
     }

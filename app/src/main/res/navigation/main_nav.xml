@@ -56,5 +56,19 @@
         android:id="@+id/searchFragment"
         android:name="com.ruItSolution.filimnest.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/preferMovieFragment"
+        android:name="com.ruItSolution.filimnest.PreferMovieFragment"
+        android:label="fragment_prefer_movie"
+        tools:layout="@layout/fragment_prefer_movie" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.ruItSolution.filimnest.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>

@@ -101,28 +101,35 @@
         android:layout_gravity="start"
         android:background="@android:color/white">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="@dimen/_120sdp"
                 android:background="@color/primary"
-                android:orientation="vertical"
                 android:paddingBottom="@dimen/_16sdp">
 
                 <ImageView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_60sdp"
-                    android:layout_gravity="center"
                     android:src="@drawable/filim_nest_logo2" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_logo"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/drawerItemRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +138,44 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_drawer_items" />
 
-        </LinearLayout>
+            <LinearLayout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="@dimen/_32sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:id="@+id/iv_facebook"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:src="@drawable/ic_facebook_24"/>
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:id="@+id/iv_telegram"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:src="@drawable/ic_telegram_24"/>
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:id="@+id/iv_website"
+                    android:padding="@dimen/_4sdp"
+                    android:background="@drawable/shape_web_background_navigation"
+                    android:src="@drawable/ic_website_24"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.navigation.NavigationView>
 
