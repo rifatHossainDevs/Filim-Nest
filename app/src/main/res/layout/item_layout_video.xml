@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="146dp"
+    android:layout_height="110dp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:elevation="@dimen/_12sdp"
+    app:cardCornerRadius="@dimen/_8sdp">
+
+    <ImageView
+        android:id="@+id/iv_movie_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_movie" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:background="#A0616264"
+        android:elevation="4dp"
+        android:layout_gravity="bottom"/>
+
+    <TextView
+        android:id="@+id/tv_movie_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="Fast Five"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:elevation="6dp"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:textColor="@color/secondary"/>
+
+</androidx.cardview.widget.CardView>

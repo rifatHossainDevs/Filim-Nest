@@ -22,4 +22,6 @@ object Constants {
     const val KEY_APP_LANGUAGE = "key_app_language"
     const val DEFAULT_LANGUAGE_CODE = "en"
 
+    const val PAGINATION_LIMIT = 20
+
 }

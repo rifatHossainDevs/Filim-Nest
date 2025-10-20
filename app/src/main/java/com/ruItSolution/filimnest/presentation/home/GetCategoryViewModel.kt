@@ -1,5 +1,6 @@
 package com.ruItSolution.filimnest.presentation.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ruItSolution.filimnest.core.Resource
@@ -21,8 +22,11 @@ class GetCategoryViewModel @Inject constructor(
     fun getCategoryList(){
         viewModelScope.launch {
             getCategoryListUseCase.invoke().collect { response ->
+                Log.d("TAG", "getCategoryList ")
+
                 when (response) {
                     is Resource.Error -> {
+                        Log.d("TAG", "invoke:${response.message}")
                         _categoryListState.value = CategoryListDataState(error = response.message)
                     }
                     is Resource.Loading -> {
@@ -30,6 +34,7 @@ class GetCategoryViewModel @Inject constructor(
                     }
                     is Resource.Success -> {
                         _categoryListState.value = CategoryListDataState(success = response.data)
+                        Log.d("TAG", "invoke:${response.data}")
                     }
                 }
             }

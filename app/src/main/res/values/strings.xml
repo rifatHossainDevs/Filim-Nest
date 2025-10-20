@@ -8,4 +8,7 @@
     <string name="key_features"><![CDATA[• Watch Latest Movies and Series\n• Personalized Watchlist\n• Smart Search & Recommendations\n• Offline Downloads\n• Smooth & Ad-Free Experience]]></string>
     <string name="about">FilimNest is your one-stop OTT platform for movies, web series, and exclusive shows. Enjoy a smooth streaming experience with personalized recommendations, offline downloads, and high-quality entertainment anytime, anywhere.</string>
     <string name="mission">To bring the world of cinema closer to you — anywhere, anytime. We aim to provide a seamless, high-quality streaming experience with the latest movies and series.</string>
+    <string name="enter_movie_name">Enter Movie Name</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>

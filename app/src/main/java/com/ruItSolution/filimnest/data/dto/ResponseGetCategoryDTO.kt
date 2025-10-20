@@ -22,8 +22,6 @@ data class ResponseGetCategoryDTO(
         val categoryName: String? = null,
         @SerializedName("categoryNo")
         val categoryNo: Int? = null,
-        @SerializedName("categoryIcon")
-        val categoryIcon: Int? = null,
         @SerializedName("createdAt")
         val createdAt: String? = null,
         @SerializedName("_id")
@@ -41,8 +39,7 @@ fun ResponseGetCategoryDTO.toDomainModel(): List<CategoryModel>? {
         CategoryModel(
             categoryName = it?.categoryName.orEmpty(),
             categoryNo = it?.categoryNo ?: 0,
-            id = it?.id.orEmpty(),
-            categoryIcon = it?.categoryIcon.toString()
+            id = it?.id.orEmpty()
         )
     }
 }

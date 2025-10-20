@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_24sdp"
-        android:hint="Enter Movie Namee"
+        android:hint="@string/enter_movie_name"
         android:textColorHint="#B6B4B4"
         app:boxStrokeWidth="2dp"
         app:counterTextAppearance="@style/TextAppearance.Material3.TitleSmall"

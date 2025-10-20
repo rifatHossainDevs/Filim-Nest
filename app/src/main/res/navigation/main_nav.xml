@@ -33,12 +33,18 @@
     </fragment>
     <fragment
         android:id="@+id/videoListByCategoryFragment"
-        android:name="com.ruItSolution.filimnest.VideoListByCategoryFragment"
+        android:name="com.ruItSolution.filimnest.presentation.categoryVideo.VideoListByCategoryFragment"
         android:label="fragment_video_list_by_category"
         tools:layout="@layout/fragment_video_list_by_category" >
         <action
             android:id="@+id/action_videoListByCategoryFragment_to_videoDetailFragment"
             app:destination="@id/videoDetailFragment" />
+        <argument
+            android:name="categoryNo"
+            app:argType="string" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/videoDetailFragment"

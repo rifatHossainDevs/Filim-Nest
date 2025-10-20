@@ -102,6 +102,8 @@ class VideoPlayerFragment :
     private fun setupAndShowWebView() {
         // rotate the WebView to landscape
         requireActivity().requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
+
         // Ensure this runs on the main thread, especially after ad callbacks
         activity?.runOnUiThread {
             loading.dismiss()
@@ -121,4 +123,9 @@ class VideoPlayerFragment :
 
     override fun setAllClickListener() {}
     override fun allObserver() {}
+
+    override fun onDestroy() {
+        requireActivity().requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        super.onDestroy()
+    }
 }

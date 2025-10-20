@@ -32,7 +32,7 @@ data class ResponseGetVideoByCategoryPaginatedDTO(
         @SerializedName("pagingCounter")
         val pagingCounter: Int? = null,
         @SerializedName("prevPage")
-        val prevPage: Any? = null,
+        val prevPage: Int? = null,
         @SerializedName("totalDocs")
         val totalDocs: Int? = null,
         @SerializedName("totalPages")

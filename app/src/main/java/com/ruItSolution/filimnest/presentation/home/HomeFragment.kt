@@ -1,5 +1,6 @@
 package com.ruItSolution.filimnest.presentation.home
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -8,6 +9,7 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.ruItSolution.filimnest.MainActivity
 import com.ruItSolution.filimnest.R
+import com.ruItSolution.filimnest.adapter.CategoryListAdapter
 import com.ruItSolution.filimnest.adapter.VideoListAdapter
 import com.ruItSolution.filimnest.core.base.BaseFragment
 import com.ruItSolution.filimnest.databinding.FragmentHomeBinding
@@ -17,15 +19,18 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate),
-    VideoListAdapter.SetOnItemClickListener {
+    VideoListAdapter.SetOnItemClickListener, CategoryListAdapter.SetOnItemClickListener {
 
     private lateinit var videoListAdapter: VideoListAdapter
     private val getVideoByCategoryViewModel: GetVideoByCategoryViewModel by viewModels()
     private val getLatestVideoViewModel: LatestVideoViewModel by viewModels()
+    private val getCategoryViewModel: GetCategoryViewModel by viewModels()
+
+    private lateinit var categoryListAdapter: CategoryListAdapter
 
 
     override fun setAllClickListener() {
-        //setImageSlider()
+        getCategoryViewModel.getCategoryList()
 
         getLatestVideoViewModel.getLatestVideo()
 
@@ -177,11 +182,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     val latestVideoList = response.success
 
                     if (latestVideoList.isNotEmpty()) {
-                        // 1. Convert your video list to a List<SlideModel>
                         val slideImages = ArrayList<SlideModel>()
                         for (video in latestVideoList) {
-                            // TODO: Replace 'video.thumbnail' and 'video.title'
-                            // with the real properties from your Video model
                             slideImages.add(
                                 SlideModel(video.thumbnail, video.title)
                             )
@@ -205,6 +207,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 }
             }
         }
+
+        // get category list observer
+        lifecycleScope.launch {
+            getCategoryViewModel.categoryListState.collect { response->
+                if (response.loading){
+                    loading.show()
+                }
+                if (response.error != null){
+                    loading.dismiss()
+                }
+                if (response.success != null){
+                    loading.dismiss()
+                    // You can use the category list here if needed
+                    val categoryList = response.success
+                    Log.d("TAG", "categoryList Observer: $categoryList")
+                    categoryListAdapter = CategoryListAdapter(categoryList, this@HomeFragment)
+                    binding.rvCategory.adapter = categoryListAdapter
+                }
+            }
+        }
     }
 
     override fun onItemClick(videoID: String) {
@@ -214,6 +236,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun onResume() {
         super.onResume()
         (requireActivity() as MainActivity).showToolBarAndDrawer()
+    }
+
+    override fun onItemClickCategory(categoryNo: String,categoryName: String) {
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToVideoListByCategoryFragment(categoryNo,categoryName))
     }
 
 }
