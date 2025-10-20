@@ -6,15 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDTO
 import com.ruItSolution.filimnest.databinding.ItemLayoutHomeBinding
-import com.ruItSolution.filimnest.domain.model.VideoModel
 
-class VideoListAdapter(val videoList: List<ResponseGetVideoByCategoryPaginatedDTO.Data.Doc?>,
-                       private val onItemClickListener: SetOnItemClickListener) :
+class VideoListAdapter(
+    val videoList: List<ResponseGetVideoByCategoryPaginatedDTO.Data.Doc?>,
+    private val onItemClickListener: SetOnItemClickListener
+) :
     RecyclerView.Adapter<VideoListAdapter.VideoViewHolder>() {
 
-        fun interface SetOnItemClickListener {
-            fun onItemClick(videoID: String)
-        }
+    fun interface SetOnItemClickListener {
+        fun onItemClick(videoID: String)
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -46,6 +47,7 @@ class VideoListAdapter(val videoList: List<ResponseGetVideoByCategoryPaginatedDT
         }
     }
 
-    inner class VideoViewHolder(val binding: ItemLayoutHomeBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class VideoViewHolder(val binding: ItemLayoutHomeBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 }

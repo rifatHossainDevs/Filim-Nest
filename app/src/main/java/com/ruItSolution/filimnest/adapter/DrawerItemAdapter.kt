@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ruItSolution.filimnest.databinding.ItemDrawerItemsBinding
-import com.ruItSolution.filimnest.domain.models.DrawerItems
+import com.ruItSolution.filimnest.domain.model.DrawerItems
 import kotlin.apply
 import kotlin.let
 

@@ -52,7 +52,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/_1sdp"
         android:orientation="vertical"
         android:elevation="4dp"
@@ -60,12 +60,13 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_category_search"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_searchMovieList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginHorizontal="24dp"
         android:orientation="vertical"
@@ -74,6 +75,7 @@
         app:spanCount="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_layout_video"
         android:visibility="gone"/>
 

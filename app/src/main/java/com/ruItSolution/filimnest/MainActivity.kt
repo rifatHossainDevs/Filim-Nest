@@ -8,7 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import com.ruItSolution.filimnest.adapter.DrawerItemAdapter
 import com.ruItSolution.filimnest.databinding.ActivityMainBinding
-import com.ruItSolution.filimnest.domain.models.DrawerItems
+import com.ruItSolution.filimnest.domain.model.DrawerItems
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

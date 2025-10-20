@@ -66,6 +66,18 @@
         <action
             android:id="@+id/action_searchFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_videoListByCategoryFragment"
+            app:destination="@id/videoListByCategoryFragment" />
+        <argument
+            android:name="page"
+            app:argType="integer" />
+        <argument
+            android:name="limit"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_searchFragment_to_videoDetailFragment"
+            app:destination="@id/videoDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/preferMovieFragment"

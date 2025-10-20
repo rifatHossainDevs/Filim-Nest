@@ -49,6 +49,10 @@ class GetVideoByCategoryViewModel @Inject constructor(
         }
     }
 
+    fun resetState() {
+        _getVideoByCategoryState.value = GetVideoByCategoryDataState()
+    }
+
     private val _getHollywoodVideoState = MutableStateFlow(GetVideoByCategoryDataState())
     val getHollywoodVideoState: Flow<GetVideoByCategoryDataState> = _getHollywoodVideoState
 
