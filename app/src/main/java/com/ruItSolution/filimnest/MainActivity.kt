@@ -1,5 +1,7 @@
 package com.ruItSolution.filimnest
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -21,13 +23,52 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.toolbar.findViewById<ImageView>(R.id.searchIcon).setOnClickListener {
             findNavController(R.id.fragmentContainerView).navigate(R.id.searchFragment)
         }
 
         setupToolbar()
         setupDrawer()
+        setupSocialLinks()
+    }
+
+    private fun setupSocialLinks() {
+        // Facebook
+        binding.menuNavigationView.findViewById<ImageView>(R.id.iv_facebook).setOnClickListener {
+            openAppOrWebsite(
+                appUrl = "https://www.facebook.com/maliha.hasan.9699", // open Facebook app if installed
+                webUrl = "https://www.facebook.com/maliha.hasan.9699"
+            )
+        }
+
+        // Telegram
+        binding.menuNavigationView.findViewById<ImageView>(R.id.iv_telegram).setOnClickListener {
+            openAppOrWebsite(
+                appUrl = "https://www.facebook.com/maliha.hasan.9699",
+                webUrl = "https://www.facebook.com/maliha.hasan.9699"
+            )
+        }
+
+        // Website
+        binding.menuNavigationView.findViewById<ImageView>(R.id.iv_website).setOnClickListener {
+            openUrl("https://www.facebook.com/uthoai.marma.408294")
+        }
+    }
+
+    private fun openAppOrWebsite(appUrl: String, webUrl: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(appUrl))
+            startActivity(intent)
+        } catch (e: Exception) {
+            // If app not installed, open in browser
+            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(webUrl))
+            startActivity(webIntent)
+        }
+    }
+
+    private fun openUrl(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
     fun hideToolBarAndDrawer() {
@@ -83,6 +124,9 @@ class MainActivity : AppCompatActivity() {
             "About Us" -> {
                 findNavController(R.id.fragmentContainerView).navigate(R.id.aboutUsFragment)
                 binding.main.closeDrawer(GravityCompat.START)
+            }
+            "Log Out"->{
+
             }
 
         }

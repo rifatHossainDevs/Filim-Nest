@@ -131,7 +131,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         binding.recyclerView.adapter = categoryAdapter
     }
 
-
     private fun setupSearchView() {
         binding.searchView.isIconified = false
 
