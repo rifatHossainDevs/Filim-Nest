@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ruItSolution.filimnest.adapter.SearchAdapter
 import com.ruItSolution.filimnest.adapter.SearchVideoAdapter
 import com.ruItSolution.filimnest.core.base.BaseFragment
-import com.ruItSolution.filimnest.data.dto.ResponseGetVideoByCategoryPaginatedDTO
 import com.ruItSolution.filimnest.databinding.FragmentSearchBinding
 import com.ruItSolution.filimnest.domain.model.SearchCategoryItem
 import com.ruItSolution.filimnest.presentation.GetVideoByCategoryViewModel
@@ -25,12 +24,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
     private lateinit var categoryAdapter: SearchAdapter
     private lateinit var allCategories: List<SearchCategoryItem>
-
     private val getSearchVideoViewModel: SearchVideoViewModel by viewModels()
     private val getVideoByCategoryViewModel: GetVideoByCategoryViewModel by viewModels()
-
-    private var lastQuery: String? = null
-    private var lastSearchResults: List<ResponseGetVideoByCategoryPaginatedDTO.Data.Doc> = emptyList()
 
     override fun setAllClickListener() {
         binding.ivBack.setOnClickListener {
@@ -83,11 +78,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         }
     }
 
-
     private fun observeVideoByCategory() {
         lifecycleScope.launch {
-            getVideoByCategoryViewModel.getVideoByCategoryState.collect {
-                state ->
+            getVideoByCategoryViewModel.getVideoByCategoryState.collect { state ->
 
                 if (state.success != null) {
                     val docs = state.success.data?.docs?.filterNotNull() ?: emptyList()
@@ -109,10 +102,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         }
 
     }
-
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

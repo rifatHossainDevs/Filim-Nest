@@ -10,7 +10,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.media3.common.util.UnstableApi
 import androidx.navigation.fragment.navArgs
-import com.google.android.gms.ads.*
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.ruItSolution.filimnest.MainActivity
@@ -109,11 +113,30 @@ class VideoPlayerFragment :
         }
     }
 
+    private fun showSystemUI() {
+        val window = requireActivity().window
+        WindowInsetsControllerCompat(
+            window,
+            window.decorView
+        ).show(WindowInsetsCompat.Type.systemBars())
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        // Keep fullscreen and landscape even when navigating away
-        hideSystemUI()
-        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
+        showSystemUI()
+
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+
+        (requireActivity() as MainActivity).showToolBarAndDrawer()
+
+        binding.webView.apply {
+            loadUrl("about:blank")
+            stopLoading()
+            clearHistory()
+            removeAllViews()
+            destroy()
+        }
     }
 
     override fun setAllClickListener() {}
