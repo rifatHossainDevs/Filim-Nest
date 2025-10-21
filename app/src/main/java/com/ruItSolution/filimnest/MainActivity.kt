@@ -33,15 +33,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupSocialLinks() {
-        // Facebook
+
         binding.menuNavigationView.findViewById<ImageView>(R.id.iv_facebook).setOnClickListener {
             openAppOrWebsite(
-                appUrl = "https://www.facebook.com/maliha.hasan.9699", // open Facebook app if installed
+                appUrl = "https://www.facebook.com/maliha.hasan.9699",
                 webUrl = "https://www.facebook.com/maliha.hasan.9699"
             )
         }
 
-        // Telegram
+
         binding.menuNavigationView.findViewById<ImageView>(R.id.iv_telegram).setOnClickListener {
             openAppOrWebsite(
                 appUrl = "https://www.facebook.com/maliha.hasan.9699",
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        // Website
+
         binding.menuNavigationView.findViewById<ImageView>(R.id.iv_website).setOnClickListener {
             openUrl("https://www.facebook.com/uthoai.marma.408294")
         }
@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(appUrl))
             startActivity(intent)
         } catch (e: Exception) {
-            // If app not installed, open in browser
             val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(webUrl))
             startActivity(webIntent)
         }
