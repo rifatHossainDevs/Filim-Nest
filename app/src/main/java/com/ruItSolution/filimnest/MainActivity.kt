@@ -85,7 +85,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar() {
-        // Menu icon click opens the drawer
         binding.ivMenuIcon.setOnClickListener {
             binding.main.openDrawer(GravityCompat.START)
         }
